@@ -1,0 +1,49 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label for="formInputTitle">Title <span class="text-danger">*</span> :</label>
+        <input type="text" class="form-control" id="formInputTitle"
+               [ngClass]="{'is-invalid': formFields['title'].invalid && (formFields['title'].dirty || formFields['title'].touched)}"
+               formControlName="title">
+        <div *ngIf="formFields['title'].invalid && (formFields['title'].dirty || formFields['title'].touched)" class="invalid-feedback">
+            <div *ngIf="formFields['title'].errors?.['required']">
+                Title is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="formInputBrand">Brand:</label>
+        <input type="text" class="form-control" id="formInputBrand" formControlName="brand">
+    </div>
+
+    <div class="form-group">
+        <label for="formInputDescription">Description <span class="text-danger">*</span> :</label>
+        <textarea class="form-control" id="formInputDescription" rows="6"
+                  [ngClass]="{'is-invalid': formFields['description'].invalid && (formFields['description'].dirty || formFields['description'].touched)}"
+                  formControlName="description"></textarea>
+        <div *ngIf="formFields['description'].invalid && (formFields['description'].dirty || formFields['description'].touched)" class="invalid-feedback">
+            <div *ngIf="formFields['description'].errors?.['required']">
+                Description is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="formInputPrice">Price <span class="text-danger">*</span> :</label>
+        <input type="number" class="form-control" id="formInputPrice"
+               [ngClass]="{'is-invalid': formFields['price'].invalid && (formFields['price'].dirty || formFields['price'].touched)}"
+               formControlName="price">
+        <div *ngIf="formFields['price'].invalid && (formFields['price'].dirty || formFields['price'].touched)" class="invalid-feedback">
+            <div *ngIf="formFields['price'].errors?.['required']">
+                Price is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="float-right">
+        <span class="text-danger">*</span> &mdash; required
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+</form>

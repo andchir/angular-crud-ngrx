@@ -8,7 +8,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {AppComponent} from 'src/app/app.component';
-import {ProductsListModule} from './products_list/products_list.module';
+import {ProductsListModule} from 'src/app/products-list/products-list.module';
+import {CreateProductModule} from 'src/app/create-product/create-product.module';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import {ProductsListModule} from './products_list/products_list.module';
             logOnly: environment.production
         }),
 
-        ProductsListModule
+        ProductsListModule,
+        CreateProductModule
     ],
     providers: [],
     bootstrap: [AppComponent]

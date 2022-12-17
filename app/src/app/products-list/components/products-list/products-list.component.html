@@ -1,15 +1,18 @@
 <div class="d-flex">
     <h1 class="mr-auto">Products</h1>
     <div>
-        <button type="button" class="btn btn-primary">
-            Add product
-        </button>
+        <a class="btn btn-primary" [routerLink]="'create-product'">
+            Create product
+        </a>
     </div>
 </div>
 
 <div class="card mb-3">
     <div class="card-body">
-        <h5 class="card-title">Product title</h5>
+        <h5 class="card-title">
+            <a href="#">Product title</a>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Brand: Adidas</h6>
         <p class="card-text">
             Product description
         </p>
@@ -21,7 +24,10 @@
 
 <div class="card mb-3">
     <div class="card-body">
-        <h5 class="card-title">Product title</h5>
+        <h5 class="card-title">
+            <a href="#">Product title</a>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Brand: Adidas</h6>
         <p class="card-text">
             Product description
         </p>

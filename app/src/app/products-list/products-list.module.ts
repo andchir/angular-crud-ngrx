@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
-import {ProductsListComponent} from 'src/app/products_list/components/products_list/products_list.component';
+import {ProductsListComponent} from 'src/app/products-list/components/products-list/products-list.component';
 
 const routes = [
     {
