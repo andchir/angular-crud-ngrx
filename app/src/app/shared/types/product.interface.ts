@@ -3,4 +3,5 @@ export interface ProductInterface {
     brand: string;
     description: string;
     price: number;
+    id?: number;
 }

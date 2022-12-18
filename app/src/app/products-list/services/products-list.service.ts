@@ -9,7 +9,7 @@ import {GetProductsListResponseInterface} from 'src/app/products-list/types/get-
 export class ProductsListService {
     constructor(private http: HttpClient) {}
 
-    getProductsList(url: string): Observable<GetProductsListResponseInterface> {
+    getProductsList(): Observable<GetProductsListResponseInterface> {
         return this.http.get<GetProductsListResponseInterface>('products')
     }
 }

@@ -1,5 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
+    {{ errors | json }}
+
     <div class="form-group">
         <label for="formInputTitle">Title <span class="text-danger">*</span> :</label>
         <input type="text" class="form-control" id="formInputTitle"
@@ -8,6 +10,9 @@
         <div *ngIf="formFields['title'].invalid && (formFields['title'].dirty || formFields['title'].touched)" class="invalid-feedback">
             <div *ngIf="formFields['title'].errors?.['required']">
                 Title is required.
+            </div>
+            <div *ngIf="formFields['title'].errors?.['incorrect']">
+                {{ formFields['title'].errors?.['incorrect'] }}
             </div>
         </div>
     </div>
@@ -45,5 +50,8 @@
         <span class="text-danger">*</span> &mdash; required
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <button type="submit" class="btn btn-primary btn-lg" [disabled]="isSubmitted">
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" *ngIf="isSubmitted"></span>
+        Submit
+    </button>
 </form>

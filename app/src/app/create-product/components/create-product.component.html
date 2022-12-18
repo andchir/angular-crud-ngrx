@@ -12,8 +12,9 @@
     <div class="col-lg-8 offset-lg-2">
 
         <app-product-form
+            [isSubmitted]="isSubmitted$ | async"
+            [errors]="serverErrors$ | async"
             (formSubmit)="onSubmit($event)"></app-product-form>
-
 
     </div>
 </div>

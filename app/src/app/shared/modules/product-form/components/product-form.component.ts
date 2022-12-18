@@ -1,16 +1,28 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    SimpleChanges
+} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {ProductInterface} from 'src/app/shared/types/product.interface';
+import {ServerErrorsInterface} from 'src/app/shared/types/server-errors.interface';
 
 @Component({
     selector: 'app-product-form',
     templateUrl: './product-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent implements OnInit, OnChanges {
 
     @Input('initialValues') initialValues: ProductInterface;
+    @Input('isSubmitted') isSubmitted: boolean;
+    @Input('errors') errors: ServerErrorsInterface | null;
     @Output('formSubmit') formSubmit = new EventEmitter<ProductInterface>();
 
     form: FormGroup;
@@ -23,6 +35,12 @@ export class ProductFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.formInit();
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['errors']) {
+            this.formUpdateErrors();
+        }
     }
 
     formInit(): void {
@@ -45,6 +63,18 @@ export class ProductFormComponent implements OnInit {
     formGroupMarkTouched(): void {
         Object.keys(this.form.controls).forEach(key => {
             (this.form.get(key) as FormControl).markAsTouched();
+        });
+    }
+
+    formUpdateErrors(): void {
+        if (!this.form) {
+            return;
+        }
+        Object.keys(this.form.controls).forEach(key => {
+            (this.form.get(key) as FormControl).setErrors(this.errors && this.errors[key]
+                ? {incorrect: this.errors[key]}
+                : null
+            );
         });
     }
 }
