@@ -1,3 +1,3 @@
 export interface ServerErrorsInterface {
-    [key: string]: string[];
+    [key: string]: string;
 }

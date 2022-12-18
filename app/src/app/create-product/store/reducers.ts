@@ -10,6 +10,7 @@ import {
 
 const initialState: CreateProductStateInterface = {
     isSubmitted: false,
+    isSuccess: false,
     errors: null,
     data: null
 }
@@ -21,6 +22,7 @@ const createProductReducer = createReducer(
         (state): CreateProductStateInterface => ({
             ...state,
             isSubmitted: true,
+            isSuccess: false,
             errors: null,
             data: null
         })
@@ -30,7 +32,7 @@ const createProductReducer = createReducer(
         (state, action): CreateProductStateInterface => ({
             ...state,
             isSubmitted: false,
-            errors: null,
+            isSuccess: true,
             data: action.data
         })
     ),
@@ -39,8 +41,8 @@ const createProductReducer = createReducer(
         (state, action): CreateProductStateInterface => ({
             ...state,
             isSubmitted: false,
-            errors: action.errors,
-            data: null
+            isSuccess: false,
+            errors: action.errors
         })
     ),
     on(routerNavigationAction, (): CreateProductStateInterface => initialState)

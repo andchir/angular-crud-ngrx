@@ -5,7 +5,7 @@ import {select, Store} from '@ngrx/store';
 
 import {ProductInterface} from 'src/app/shared/types/product.interface';
 import {createProductAction} from 'src/app/create-product/store/actions/create-product.action';
-import {isSubmittedSelector, serverErrorsSelector} from 'src/app/create-product/store/selectors';
+import {isSubmittedSelector, isSuccessSelector, serverErrorsSelector} from 'src/app/create-product/store/selectors';
 import {ServerErrorsInterface} from "../../shared/types/server-errors.interface";
 
 @Component({
@@ -16,12 +16,14 @@ import {ServerErrorsInterface} from "../../shared/types/server-errors.interface"
 export class CreateProductComponent implements OnInit {
 
     isSubmitted$: Observable<boolean>;
+    isSuccess$: Observable<boolean>;
     serverErrors$: Observable<ServerErrorsInterface>;
 
     constructor(private store: Store) {}
 
     ngOnInit(): void {
         this.isSubmitted$ = this.store.pipe(select(isSubmittedSelector));
+        this.isSuccess$ = this.store.pipe(select(isSuccessSelector));
         this.serverErrors$ = this.store.pipe(select(serverErrorsSelector));
     }
 

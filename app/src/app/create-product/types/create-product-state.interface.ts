@@ -3,6 +3,7 @@ import {ServerErrorsInterface} from 'src/app/shared/types/server-errors.interfac
 
 export interface CreateProductStateInterface {
     isSubmitted: boolean;
+    isSuccess: boolean;
     data: ProductInterface;
     errors: ServerErrorsInterface;
 }

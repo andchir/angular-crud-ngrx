@@ -30,7 +30,7 @@ export class SaveProductInterceptor implements HttpInterceptor {
             ? of(response)
             : throwError(() => {
             return {
-                title: 'Random error for example.'
+                title: 'Title random error for example.'
             };
         });
     }

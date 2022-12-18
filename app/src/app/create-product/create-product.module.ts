@@ -34,7 +34,7 @@ const routes = [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: SaveProductInterceptor,
-            multi: true,
+            multi: true
         },
         CreateProductService
     ]

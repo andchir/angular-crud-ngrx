@@ -24,8 +24,14 @@ export class CreateProductEffect {
                 map((data: ProductInterface) => {
                     return createProductSuccessAction({data});
                 }),
-                catchError((errorResult: ServerErrorsInterface) => {
-                    return of(createProductFailureAction({errors: errorResult}));
+                catchError((errorResult: ServerErrorsInterface|HttpErrorResponse) => {
+                    if (errorResult instanceof HttpErrorResponse) {
+                        return of(createProductFailureAction({errors: {
+                            server: 'Error. Please try again later.'
+                        }}));
+                    } else {
+                        return of(createProductFailureAction({errors: errorResult}));
+                    }
                 })
             );
         })

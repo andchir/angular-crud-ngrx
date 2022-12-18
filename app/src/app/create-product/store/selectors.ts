@@ -12,6 +12,11 @@ export const isSubmittedSelector = createSelector(
     (state: CreateProductStateInterface) => state.isSubmitted
 );
 
+export const isSuccessSelector = createSelector(
+    productsListFeatureSelector,
+    (state: CreateProductStateInterface) => state.isSuccess
+);
+
 export const serverErrorsSelector = createSelector(
     productsListFeatureSelector,
     (state: CreateProductStateInterface) => state.errors
