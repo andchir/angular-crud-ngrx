@@ -11,3 +11,8 @@ export const isLoadingSelector = createSelector(
     productsListFeatureSelector,
     (state: ProductsListStateInterface) => state.isLoading
 );
+
+export const dataSelector = createSelector(
+    productsListFeatureSelector,
+    (state: ProductsListStateInterface) => state.data
+);

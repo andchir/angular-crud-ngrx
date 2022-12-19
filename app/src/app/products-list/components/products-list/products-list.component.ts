@@ -3,8 +3,9 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 
-import {isLoadingSelector} from 'src/app/products-list/store/selectors';
+import {dataSelector, isLoadingSelector} from 'src/app/products-list/store/selectors';
 import {getProductsListAction} from 'src/app/products-list/store/actions/get-products-list.action';
+import {GetProductsListResponseInterface} from "../../types/get-products-list-response.interface";
 
 @Component({
     selector: 'app-products-list',
@@ -14,6 +15,7 @@ import {getProductsListAction} from 'src/app/products-list/store/actions/get-pro
 export class ProductsListComponent implements OnInit {
 
     isLoading$: Observable<boolean>;
+    data$: Observable<GetProductsListResponseInterface>;
 
     constructor(
         private store: Store
@@ -21,6 +23,7 @@ export class ProductsListComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+        this.data$ = this.store.pipe(select(dataSelector));
 
         this.fetchData();
     }

@@ -29,7 +29,8 @@ const productsListReducer = createReducer(
         getProductsListSuccessAction,
         (state, action): ProductsListStateInterface => ({
             ...state,
-            isLoading: false
+            isLoading: false,
+            data: action.data
         })
     ),
     on(

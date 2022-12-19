@@ -9,8 +9,8 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
-import {AppRoutingModule} from 'src/app/app-routing.module';
 import {AppComponent} from 'src/app/app.component';
+import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ProductsListModule} from 'src/app/products-list/products-list.module';
 import {CreateProductModule} from 'src/app/create-product/create-product.module';
 
@@ -20,7 +20,6 @@ import {CreateProductModule} from 'src/app/create-product/create-product.module'
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         ReactiveFormsModule,
         HttpClientModule,
         StoreModule.forRoot({}, {}),
@@ -30,6 +29,7 @@ import {CreateProductModule} from 'src/app/create-product/create-product.module'
             logOnly: environment.production
         }),
 
+        AppRoutingModule,
         ProductsListModule,
         CreateProductModule,
         StoreRouterConnectingModule.forRoot()

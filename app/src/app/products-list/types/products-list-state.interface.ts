@@ -1,8 +1,8 @@
-import {ProductInterface} from 'src/app/shared/types/product.interface';
-import {ServerErrorsInterface} from "../../shared/types/server-errors.interface";
+import {ServerErrorsInterface} from 'src/app/shared/types/server-errors.interface';
+import {GetProductsListResponseInterface} from './get-products-list-response.interface';
 
 export interface ProductsListStateInterface {
     isLoading: boolean;
     errors: ServerErrorsInterface;
-    data: ProductInterface[];
+    data: GetProductsListResponseInterface;
 }
