@@ -77,4 +77,10 @@ export class ProductFormComponent implements OnInit, OnChanges {
             );
         });
     }
+
+    resetForm(): void {
+        if (this.form) {
+            this.form.reset();
+        }
+    }
 }

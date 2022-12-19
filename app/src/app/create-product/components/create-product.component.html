@@ -18,7 +18,7 @@
         <app-product-form
             [isSubmitted]="isSubmitted$ | async"
             [errors]="serverErrors$ | async"
-            (formSubmit)="onSubmit($event)"></app-product-form>
+            (formSubmit)="onSubmit($event)" #productForm></app-product-form>
 
     </div>
 </div>
