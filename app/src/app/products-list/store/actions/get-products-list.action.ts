@@ -1,4 +1,4 @@
-import {createAction, props} from '@ngrx/store'
+import {createAction, props} from '@ngrx/store';
 
 import {ActionTypes} from 'src/app/products-list/store/action-types';
 import {GetProductsListResponseInterface} from 'src/app/products-list/types/get-products-list-response.interface';

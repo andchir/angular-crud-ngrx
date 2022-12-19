@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
 
 import {of} from 'rxjs';
-import {map, mergeMap, catchError, switchMap} from 'rxjs/operators';
+import {map, catchError, switchMap} from 'rxjs/operators';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 
 import {ProductsListService} from 'src/app/products-list/services/products-list.service';
 import {
     getProductsListAction,
-    getProductsListFailureAction, getProductsListSuccessAction
+    getProductsListFailureAction,
+    getProductsListSuccessAction
 } from 'src/app/products-list/store/actions/get-products-list.action';
 import {GetProductsListResponseInterface} from 'src/app/products-list/types/get-products-list-response.interface';
 

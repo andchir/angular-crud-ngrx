@@ -6,7 +6,7 @@ import {
     createProductAction,
     createProductFailureAction,
     createProductSuccessAction
-} from './actions/create-product.action';
+} from 'src/app/create-product/store/actions/create-product.action';
 
 const initialState: CreateProductStateInterface = {
     isSubmitted: false,

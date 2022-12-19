@@ -13,22 +13,33 @@
 </div>
 
 <ng-container *ngIf="data$ | async">
-    <div class="card mb-4" *ngFor="let item of (data$ | async).items">
-        <div class="card-body">
-            <h5 class="card-title">
-                <a [routerLink]="['products', item.id]">{{ item.title }}</a>
-            </h5>
-            <h6 class="card-subtitle mb-2 text-muted">Brand: {{ item.brand }}</h6>
-            <p class="card-text">
-                {{ item.description }}
-            </p>
-            <p class="card-text">
-                Price: <b>${{ item.price }}</b>
-            </p>
-            <div>
-                <button type="button" class="btn btn-sm btn-outline-info mr-2">Edit</button>
-                <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+    <div *ngIf="(data$ | async).items.length > 0; else emptyMessage">
+        <div class="card mb-4" *ngFor="let item of (data$ | async).items">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a [routerLink]="['products', item.id]">{{ item.title }}</a>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Brand: {{ item.brand }}</h6>
+                <p class="card-text">
+                    {{ item.description }}
+                </p>
+                <p class="card-text">
+                    Price: <b>${{ item.price }}</b>
+                </p>
+                <div>
+                    <button type="button" class="btn btn-sm btn-outline-info mr-2">
+                        Edit
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-danger"
+                            (click)="deleteItem(item.id)">
+                        Delete
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </ng-container>
+
+<ng-template #emptyMessage>
+    <div class="alert alert-info">Empty.</div>
+</ng-template>

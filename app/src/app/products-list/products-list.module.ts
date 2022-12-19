@@ -11,6 +11,7 @@ import {ProductsListComponent} from 'src/app/products-list/components/products-l
 import {reducers} from 'src/app/products-list/store/reducers';
 import {GetProductsListEffect} from 'src/app/products-list/store/effects/get-products-list.effect';
 import {ProductsListInterceptor} from 'src/app/products-list/interceptors/products-list.interceptor';
+import {DeleteProductEffect} from 'src/app/products-list/store/effects/delete-product.effect';
 
 const routes = [
     {
@@ -23,7 +24,7 @@ const routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        EffectsModule.forFeature([GetProductsListEffect]),
+        EffectsModule.forFeature([GetProductsListEffect, DeleteProductEffect]),
         StoreModule.forFeature('productsList', reducers)
     ],
     declarations: [ProductsListComponent],

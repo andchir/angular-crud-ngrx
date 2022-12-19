@@ -10,6 +10,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 
 import {GetProductsListResponseInterface} from 'src/app/products-list/types/get-products-list-response.interface';
+import {SuccessResponseInterface} from 'src/app/shared/types/success-response.interface';
 
 @Injectable()
 export class ProductsListInterceptor implements HttpInterceptor {
@@ -17,8 +18,20 @@ export class ProductsListInterceptor implements HttpInterceptor {
     intercept(
         request: HttpRequest<GetProductsListResponseInterface>,
         next: HttpHandler
-    ): Observable<HttpEvent<GetProductsListResponseInterface>> {
-        const response = new HttpResponse<GetProductsListResponseInterface>({// Simulate a server response
+    ): Observable<HttpEvent<GetProductsListResponseInterface|SuccessResponseInterface>> {
+
+        // Simulating a product delete server response
+        if (request.method === 'DELETE') {
+            const deleteResponse = new HttpResponse<SuccessResponseInterface>({
+                body: {
+                    success: true
+                }
+            });
+            return of(deleteResponse);
+        }
+
+        // Simulating a server response for a list of products
+        const response = new HttpResponse<GetProductsListResponseInterface>({
             body: {
                 items: [
                     {

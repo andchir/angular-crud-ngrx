@@ -6,7 +6,8 @@ import {
     getProductsListAction,
     getProductsListFailureAction,
     getProductsListSuccessAction
-} from './actions/get-products-list.action';
+} from 'src/app/products-list/store/actions/get-products-list.action';
+import {deleteProductSuccessAction} from 'src/app/products-list/store/actions/delete-product.action';
 
 const initialState: ProductsListStateInterface = {
     isLoading: false,
@@ -40,6 +41,18 @@ const productsListReducer = createReducer(
             isLoading: false,
             errors: action.errors
         })
+    ),
+    on(
+        deleteProductSuccessAction,
+        (state, action): ProductsListStateInterface => {
+            const items = state.data.items.filter((item) => {
+                return item.id !== action.itemId;
+            });
+            return {
+                ...state,
+                data: {items, total: state.data.total - 1}
+            };
+        }
     ),
     on(routerNavigationAction, (): ProductsListStateInterface => initialState)
 );

@@ -7,9 +7,17 @@ import {GetProductsListResponseInterface} from 'src/app/products-list/types/get-
 
 @Injectable()
 export class ProductsListService {
+
+    private baseUrl = '/products';
+
     constructor(private http: HttpClient) {}
 
     getProductsList(): Observable<GetProductsListResponseInterface> {
-        return this.http.get<GetProductsListResponseInterface>('products')
+        return this.http.get<GetProductsListResponseInterface>(this.baseUrl)
+    }
+
+    deleteItem(itemId: number): Observable<any> {
+        const url = `${this.baseUrl}/${itemId}`;
+        return this.http.delete<any>(url);
     }
 }

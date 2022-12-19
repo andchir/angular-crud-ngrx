@@ -7,10 +7,12 @@ import {ProductInterface} from 'src/app/shared/types/product.interface';
 @Injectable()
 export class CreateProductService {
 
+    private baseUrl = '/products';
+
     constructor(private http: HttpClient) {}
 
     createItem(item: ProductInterface): Observable<ProductInterface> {
         return this.http
-            .post<ProductInterface>('products', item);
+            .post<ProductInterface>(this.baseUrl, item);
     }
 }
