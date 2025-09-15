@@ -21,5 +21,5 @@ const routes = [
 
     ]
 })
-export class ProductsListModule {
+export class ProductModule {
 }
